@@ -1,0 +1,55 @@
+.action-buttons {
+    padding: 20px; 
+    font-size: 20PX;
+    font-weight: 600;
+    min-height: 40px; 
+    border: 0px;
+    border-radius: 0.5rem;
+    color: rgb(242, 230, 230);
+    background-color: rgb(172 138 143);
+    /* background-color: aquamarine; */
+    max-width: 200px; 
+    border-radius: 1.9rem; 
+}
+
+.action-buttons:hover {
+    background-color: rgb(132, 56, 56);
+    
+}
+
+.input-fields {    
+    min-width: 300px; 
+    padding: 20px; 
+    /* background-color: rgb(223, 216, 216);  */
+    /* background-color: aquamarine; */
+    border: 1px solid black; 
+    border-radius: 1.9rem; 
+}
+
+/* .input-fields {    
+    min-width: 300px; 
+    padding: 20px; 
+    background-color: rgb(223, 216, 216); 
+    background-color: aquamarine;
+    border: none; 
+    border-radius: 1.9rem; 
+} */
+
+.dep-cards {
+    text-align: center;
+    padding: 20px;
+    min-width: 250px;
+}
+
+.dep-cards p {
+    font-size: 20px;
+    font-family: Arial;
+}
+
+.table-style {
+    margin: auto;     
+    border: 1px solid white;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    background-color: rgb(212 179 184); /* Set your desired background color here */
+}
