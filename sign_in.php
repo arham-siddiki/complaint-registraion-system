@@ -11,23 +11,23 @@
 
 <!DOCTYPE html>
 <html>
-
+    <title>Sign In</title>
     <head>
         <link href="./basic_styles.css" type="text/css" rel="stylesheet">
         <script>
             function validateForm() {
+                
                 var loginId = document.forms["myForm"]["loginId"].value;
                 var password = document.forms["myForm"]["pass"].value;
-                var confirmPassword = document.forms["myForm"]["cPass"].value;
 
                 // Check if loginId is empty
-                if (loginId === "") {
+                if (loginId.trim() === "") {
                     alert("Login ID must be filled out");
                     return false;
                 }
 
                 // Check if password is empty
-                if (password === "") {
+                if (password.trim() === "") {
                     alert("Password must be filled out");
                     return false;
                 }
@@ -40,49 +40,49 @@
 
 <body style="padding: 10px; background-color: rgb(223, 216, 216); color: rgb(91, 84, 84);">
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
-    // Check if the form is valid by calling the JavaScript validateForm function
-    if (!empty($_POST["loginId"]) && !empty($_POST["pass"])) {
-        $loginId = $_POST["loginId"];
-        $pass = $_POST["pass"];
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
+        // Check if the form is valid by calling the JavaScript validateForm function
+        if (!empty($_POST["loginId"]) && !empty($_POST["pass"])) {
+            $loginId = $_POST["loginId"];
+            $pass = $_POST["pass"];
 
-        $con = mysqli_connect('localhost', 'root', '', 'crs_demo');
-        $checkSql = "SELECT * FROM user_role WHERE email = '$loginId'";
-        $result = mysqli_query($con, $checkSql);
+            $con = mysqli_connect('localhost', 'root', '', 'crs_demo');
+            $checkSql = "SELECT * FROM user_role WHERE email = '$loginId'";
+            $result = mysqli_query($con, $checkSql);
 
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $storedPassHash = $row["pass"];
-            $role=$row["role"];            
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $storedPassHash = $row["pass"];
+                $role=$row["role"];            
 
-            if ($pass==$storedPassHash) {  
-                $_SESSION["userId"] = $row["email"];
-                $_SESSION["role"] = $role;
+                if ($pass==$storedPassHash) {  
+                    $_SESSION["userId"] = $row["email"];
+                    $_SESSION["role"] = $role;
 
-                $redirectUrl = '';
-                if ($role === 'admin') {
-                    $redirectUrl = 'home_admin.php';
-                } else if($role === 'department') {
-                    $redirectUrl = 'home_department.php';
-                } else if($role === 'employee') {
-                    $redirectUrl = 'home_employee.php';
+                    $redirectUrl = '';
+                    if ($role === 'admin') {
+                        $redirectUrl = 'home_admin.php';
+                    } else if($role === 'department') {
+                        $redirectUrl = 'home_department.php';
+                    } else if($role === 'employee') {
+                        $redirectUrl = 'home_employee.php';
+                    } else {
+                        $redirectUrl = 'home_citizen.php';
+                    }
+                    echo '<script>window.location.href = "'.$redirectUrl.'";</script>';                  
+                    // echo '<script>alert("'.$role.'");</script>';                
                 } else {
-                    $redirectUrl = 'home_citizen.php';
+                    echo '<script>alert("Password is incorrect. Authentication failed.");</script>';
                 }
-                echo '<script>window.location.href = "'.$redirectUrl.'";</script>';                  
-                // echo '<script>alert("'.$role.'");</script>';                
-            } else {
-                echo '<script>alert("Password is incorrect. Authentication failed.");</script>';
-            }
 
-        } else {
-            echo '<script>alert("No such user exist.");</script>';
+            } else {
+                echo '<script>alert("No such user exist.");</script>';
+            }
+            mysqli_close($con);
         }
-        mysqli_close($con);
     }
-}
-?>
+    ?>
 
 <div>
 <div style="padding: 15px 15px; margin-bottom: 20px; display: flex; justify-content: space-between; background-color: aliceblue; border-radius: 0.5rem;">

@@ -43,14 +43,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
+    <title>Add Employee</title>
     <link href="./basic_styles.css" type="text/css" rel="stylesheet">
+    <script>
+        function validateForm() {
+            var name = document.forms["myForm"]["name"].value;
+            var contact = document.forms["myForm"]["contact"].value;
+            var email = document.forms["myForm"]["email"].value;
+            var pass = document.forms["myForm"]["pass"].value;
+
+            if (name.trim() == "") {
+                alert("Please enter the employee name.");
+                return false;
+            }
+            if (contact.trim() == "") {
+                alert("Please enter the employee contact.");
+                return false;
+            }
+            if (email.trim() == "") {
+                alert("Please enter the employee email.");
+                return false;
+            }
+            if (pass.trim() == "") {
+                alert("Please enter the employee password.");
+                return false;
+            }
+
+            // You can add more specific validation rules as needed
+
+            return true;
+        }
+    </script>
 </head>
 
 <body style="padding: 10px; background-color: rgb(223, 216, 216); color: rgb(91, 84, 84);">
 
     <div style="align-items: center; background-color: #ac8a8f; padding: 30px; justify-content: space-between; border-radius: 0.5rem;">
         <div style="margin: auto; background-color: aliceblue; width: fit-content; padding: 20px; border-radius: 0.5rem;" >
-            <form id="myForm" action="" method="post">
+            <form id="myForm" action="" method="post" onsubmit="return validateForm();">
                 <input type="text" name="name" placeholder="Employee name" class="input-fields"><br><br>
                 <input type="text" name="contact" placeholder="Employee contact" class="input-fields"><br><br>
                 <input type="text" name="email" placeholder="Employee email" class="input-fields"><br><br>

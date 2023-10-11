@@ -36,7 +36,20 @@
     <html>
 
     <head>
+        <title>Add Complaint</title>
         <link href="./basic_styles.css" type="text/css" rel="stylesheet">
+        <script>
+            function validateForm() {
+                var issue = document.forms["myForm"]["issue"].value;
+
+                if (issue.trim() == "") {
+                    alert("Please enter your issue.");
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
     </head>
 
     <body style="padding: 10px; background-color: rgb(223, 216, 216); color: rgb(91, 84, 84);">
@@ -50,7 +63,7 @@
                 <label>Contact: <?php echo $contact; ?></label><br><br>
             </div>
 
-            <form id="myForm" action="" method="post">            
+            <form id="myForm" action="" method="post" onsubmit="return validateForm();">            
                 <textarea type="text" name="issue" placeholder="Write your issue here" class="input-fields" rows="3" cols="20"></textarea><br><br>
                 <?php
                     $con = mysqli_connect('localhost', 'root', '', 'crs_demo');

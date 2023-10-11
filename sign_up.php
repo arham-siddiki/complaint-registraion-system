@@ -12,32 +12,41 @@
 <html>
 
 <head>
+    <title>Sign Up</title>
     <link href="./basic_styles.css" type="text/css" rel="stylesheet">
     <script>
         function validateForm() {
+            var name = document.forms["myForm"]["name"].value;
             var loginId = document.forms["myForm"]["loginId"].value;
+            var contact = document.forms["myForm"]["contact"].value;
             var password = document.forms["myForm"]["pass"].value;
             var confirmPassword = document.forms["myForm"]["cPass"].value;
 
-            // Check if loginId is empty
+            if (name === "") {
+                alert("Name must be filled out");
+                return false;
+            }
+
             if (loginId === "") {
                 alert("Login ID must be filled out");
                 return false;
             }
 
-            // Check if password is empty
+            if (contact === "") {
+                alert("Contact must be filled out");
+                return false;
+            }
+
             if (password === "") {
                 alert("Password must be filled out");
                 return false;
             }
 
-            // Check if confirmPassword is empty
             if (confirmPassword === "") {
                 alert("Confirm Password must be filled out");
                 return false;
             }
 
-            // Check if password and confirmPassword match
             if (password !== confirmPassword) {
                 alert("Passwords do not match");
                 return false;

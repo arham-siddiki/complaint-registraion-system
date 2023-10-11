@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Complaints</title>
+    <title>Employees</title>
     <link href="./basic_styles.css" type="text/css" rel="stylesheet">
 </head>
 <body style="padding: 10px; background-color: rgb(223, 216, 216);">

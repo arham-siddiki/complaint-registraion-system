@@ -1,6 +1,11 @@
+<?php
+    require 'db.php';
+?>
+
 <html>
 
 <head>
+    <title>Home</title>
     <link href="./basic_styles.css" type="text/css" rel="stylesheet">
 </head>
 

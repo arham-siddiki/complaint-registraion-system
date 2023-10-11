@@ -32,14 +32,29 @@
 <html>
 
 <head>
+    <title>My Profile</title>
     <link href="./basic_styles.css" type="text/css" rel="stylesheet">
+    <script>
+        function validateForm() {
+            var contact = document.forms["myForm"]["contact"].value;
+
+            if (contact.trim() === "" || isNaN(contact)) {
+                alert("Please enter a valid numeric contact number.");
+                return false;
+            }
+
+            // You can add more specific validation rules as needed
+
+            return true;
+        }
+    </script>
 </head>
 
 <body style="padding: 10px; background-color: rgb(223, 216, 216); color: rgb(91, 84, 84);">
 
     <div style="align-items: center; background-color: #ac8a8f; padding: 30px; justify-content: space-between; border-radius: 0.5rem;">
         <div style="margin: auto; background-color: aliceblue; width: fit-content; padding: 20px; border-radius: 0.5rem;" >
-            <form id="myForm" action="" method="post"><br>                
+            <form id="myForm" action="" method="post" onsubmit="return validateForm();"><br>                
                 Name : <?php echo $name; ?><br><br>
                 Email : <?php echo $loginId; ?><br><br>
                 Department : <?php echo $department; ?><br><br>                

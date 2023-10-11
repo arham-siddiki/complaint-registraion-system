@@ -25,6 +25,7 @@
 <html>
 
 <head>
+    <title>Dashboard</title>
     <link href="./basic_styles.css" type="text/css" rel="stylesheet">
 </head>
 

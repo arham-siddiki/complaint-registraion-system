@@ -99,7 +99,7 @@
             window.alert(data.message);
         })
         .catch(error => {
-            window.alert('Error:', error);
+            window.alert('Error!! please refresh page. ', error);
         });
         location.reload();
     }
@@ -117,7 +117,7 @@
             window.alert(data.message);
         })
         .catch(error => {
-            window.alert('Error:', error);
+            window.alert('Error!! please refresh page. ', error);
         });
         location.reload();
     }
@@ -135,7 +135,7 @@
             window.alert(data.message);
         })
         .catch(error => {
-            window.alert('Error:', error);
+            window.alert('Error!! please refresh page. ', error);
         });
         location.reload();
     }
@@ -153,7 +153,7 @@
             window.alert(data.message);
         })
         .catch(error => {
-            window.alert('Error:', error);
+            window.alert('Error!! please refresh page. ', error);
         });
         location.reload();
     }
