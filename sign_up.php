@@ -19,35 +19,34 @@
             var name = document.forms["myForm"]["name"].value;
             var loginId = document.forms["myForm"]["loginId"].value;
             var contact = document.forms["myForm"]["contact"].value;
-            var password = document.forms["myForm"]["pass"].value;
+            var pass = document.forms["myForm"]["pass"].value;
             var confirmPassword = document.forms["myForm"]["cPass"].value;
 
-            if (name === "") {
+            // Regular expressions for email and contact number validation
+            var emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+            var contactNumberRegex = /^[0-9]{10}$/; // Change this regex as needed
+
+            if (name.trim() === "") {
                 alert("Name must be filled out");
                 return false;
             }
 
-            if (loginId === "") {
-                alert("Login ID must be filled out");
+            if (loginId.trim() === "" || !emailRegex.test(loginId)) {
+                alert("Please enter a valid email address.");
                 return false;
             }
 
-            if (contact === "") {
-                alert("Contact must be filled out");
+            if (contact.trim() === "" || !contactNumberRegex.test(contact)) {
+                alert("Please enter a valid 10-digit contact number.");
                 return false;
             }
 
-            if (password === "") {
+            if (pass.trim() === "") {
                 alert("Password must be filled out");
                 return false;
             }
 
-            if (confirmPassword === "") {
-                alert("Confirm Password must be filled out");
-                return false;
-            }
-
-            if (password !== confirmPassword) {
+            if (confirmPassword.trim() === "" || pass !== confirmPassword) {
                 alert("Passwords do not match");
                 return false;
             }
@@ -56,6 +55,7 @@
             return true;
         }
     </script>
+
 </head>
 
 <body style="padding: 10px; background-color: rgb(223, 216, 216); color: rgb(91, 84, 84);">

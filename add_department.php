@@ -43,25 +43,39 @@
     <title>Add Department</title>
     <link href="./basic_styles.css" type="text/css" rel="stylesheet">
     <script>
-        function validateForm() {
-            var departmentName = document.forms["myForm"]["name"].value;
-            var departmentEmail = document.forms["myForm"]["email"].value;
-            var departmentPass = document.forms["myForm"]["pass"].value;
-            var headName = document.forms["myForm"]["hName"].value;
-            var headEmail = document.forms["myForm"]["hEmail"].value;
-            var headPass = document.forms["myForm"]["hPass"].value;
+    function validateForm() {
+        var departmentName = document.forms["myForm"]["name"].value;
+        var departmentEmail = document.forms["myForm"]["email"].value;
+        var departmentPass = document.forms["myForm"]["pass"].value;
+        var headName = document.forms["myForm"]["hName"].value;
+        var headEmail = document.forms["myForm"]["hEmail"].value;
+        var headPass = document.forms["myForm"]["hPass"].value;
 
-            if (departmentName.trim() == "" || departmentEmail.trim() == "" || departmentPass.trim() == "" ||
-                headName.trim() == "" || headEmail.trim() == "" || headPass.trim() == "") {
-                alert("Please fill in all fields.");
-                return false;
-            }
+        // Regular expressions for email and contact number validation
+        var emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+        var contactNumberRegex = /^[0-9]{10}$/; // Change this regex as needed
 
-            // Add additional validation as needed
-
-            return true;
+        if (departmentName.trim() == "" || departmentEmail.trim() == "" || departmentPass.trim() == "" ||
+            headName.trim() == "" || headEmail.trim() == "" || headPass.trim() == "") {
+            alert("Please fill in all fields.");
+            return false;
         }
-    </script>
+
+        if (!emailRegex.test(departmentEmail) || !emailRegex.test(headEmail)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+
+        // You can add more specific validation for contact numbers here
+        if (!contactNumberRegex.test(departmentContact) || !contactNumberRegex.test(headContact)) {
+            alert("Please enter a valid contact number.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+In 
 </head>
 
 <body style="padding: 10px; background-color: rgb(223, 216, 216); color: rgb(91, 84, 84);">

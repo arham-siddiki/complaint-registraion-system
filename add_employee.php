@@ -46,34 +46,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Add Employee</title>
     <link href="./basic_styles.css" type="text/css" rel="stylesheet">
     <script>
-        function validateForm() {
-            var name = document.forms["myForm"]["name"].value;
-            var contact = document.forms["myForm"]["contact"].value;
-            var email = document.forms["myForm"]["email"].value;
-            var pass = document.forms["myForm"]["pass"].value;
+    function validateForm() {
+        var name = document.forms["myForm"]["name"].value;
+        var contact = document.forms["myForm"]["contact"].value;
+        var email = document.forms["myForm"]["email"].value;
+        var pass = document.forms["myForm"]["pass"].value;
 
-            if (name.trim() == "") {
-                alert("Please enter the employee name.");
-                return false;
-            }
-            if (contact.trim() == "") {
-                alert("Please enter the employee contact.");
-                return false;
-            }
-            if (email.trim() == "") {
-                alert("Please enter the employee email.");
-                return false;
-            }
-            if (pass.trim() == "") {
-                alert("Please enter the employee password.");
-                return false;
-            }
+        // Regular expressions for email and contact number validation
+        var emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+        var contactNumberRegex = /^[0-9]{10}$/; // Change this regex as needed
 
-            // You can add more specific validation rules as needed
-
-            return true;
+        if (name.trim() == "") {
+            alert("Please enter the employee name.");
+            return false;
         }
-    </script>
+        if (contact.trim() == "") {
+            alert("Please enter the employee contact.");
+            return false;
+        }
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+        if (!contactNumberRegex.test(contact)) {
+            alert("Please enter a valid 10-digit contact number.");
+            return false;
+        }
+        if (pass.trim() == "") {
+            alert("Please enter the employee password.");
+            return false;
+        }
+
+        // You can add more specific validation rules as needed
+
+        return true;
+    }
+</script>
+
 </head>
 
 <body style="padding: 10px; background-color: rgb(223, 216, 216); color: rgb(91, 84, 84);">
